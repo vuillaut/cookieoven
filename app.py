@@ -305,6 +305,7 @@ def generate_project():
     try:
         # Run Cookiecutter
         logging.info(f"Generating project from template {template_dir} into {output_parent_dir}")
+        logging.info(f"Passing context to cookiecutter: {context}")
         # output_dir specifies WHERE the generated project dir should be created
         generated_project_path_str = cookiecutter(
             template=str(template_dir), no_input=True, extra_context=context, output_dir=str(output_parent_dir)
