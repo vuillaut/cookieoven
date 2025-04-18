@@ -119,7 +119,7 @@ def copy_path(source_path_str: str, target_dir: Path) -> None:
 
 def parse_cookiecutter_json(template_dir: Path) -> tuple[list, Path]:
     """Parses cookiecutter.json and returns a list of field definitions
-    and the potentially adjusted template directory path."""
+       and the potentially adjusted template directory path."""
     # Find cookiecutter.json potentially within a subdirectory (common case)
     json_path = None
     effective_template_dir = template_dir
@@ -131,14 +131,17 @@ def parse_cookiecutter_json(template_dir: Path) -> tuple[list, Path]:
         if len(possible_subdirs) == 1:
             subdir_json_path = possible_subdirs[0] / "cookiecutter.json"
             if subdir_json_path.is_file():
-                effective_template_dir = possible_subdirs[0]  # Adjust the effective dir
-                json_path = subdir_json_path
+                 effective_template_dir = possible_subdirs[0] # Adjust the effective dir
+                 json_path = subdir_json_path
 
     if not json_path or not json_path.is_file():
-        raise FileNotFoundError("cookiecutter.json not found in the template root or its immediate subdirectory.")
+        raise FileNotFoundError(
+            "cookiecutter.json not found in the template root "
+            "or its immediate subdirectory."
+        )
 
     try:
-        with open(json_path, "r") as f:
+        with open(json_path, 'r') as f:
             data = json.load(f)
     except json.JSONDecodeError as e:
         raise ValueError(f"Invalid JSON in cookiecutter.json: {e}")
@@ -146,7 +149,7 @@ def parse_cookiecutter_json(template_dir: Path) -> tuple[list, Path]:
     fields = []
     for name, default_value in data.items():
         # Skip private variables (starting with _)
-        if name.startswith("_"):
+        if name.startswith('_'):
             continue
 
         # Basic type inference
@@ -166,7 +169,20 @@ def parse_cookiecutter_json(template_dir: Path) -> tuple[list, Path]:
 
         # Generic help text
         help_text = help_text or f"Enter value for {name}"
-        fields.append({"name": name, "type": field_type, "default": default_value, "options": options, "help_text": help_text})
+
+        # Don't add fields whose defaults look like template variables needing rendering
+        # These should be handled internally by cookiecutter based on other context.
+        is_templated_default = isinstance(default_value, str) and \
+                                 "{{" in default_value and "}}" in default_value
+
+        if not is_templated_default:
+            fields.append({
+                "name": name,
+                "type": field_type,
+                "default": default_value,
+                "options": options,
+                "help_text": help_text
+            })
 
     return fields, effective_template_dir
 

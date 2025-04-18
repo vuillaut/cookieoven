@@ -111,6 +111,7 @@ h1, h2 {
 
 /* Spinner */
 #loading-spinner {
+    display: none; /* Hide by default */
     color: var(--sw-primary);
 }
 
