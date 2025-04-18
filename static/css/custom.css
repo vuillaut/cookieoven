@@ -1,0 +1,130 @@
+/* static/css/custom.css */
+
+:root {
+    --bs-primary: #0d6efd; /* Bootstrap blue, can be customized */
+    --bs-secondary: #6c757d;
+    --bs-success: #198754;
+    --bs-info: #0dcaf0;
+    --bs-warning: #ffc107;
+    --bs-danger: #dc3545;
+    --bs-light: #f8f9fa;
+    --bs-dark: #212529;
+
+    /* Custom Software Theme Palette (Darker) */
+    --sw-bg: #1a1d21; /* Very dark background */
+    --sw-bg-secondary: #2c3136; /* Slightly lighter dark for cards/forms */
+    --sw-border: #495057; /* Subtle borders */
+    --sw-text: #ced4da; /* Light grey text */
+    --sw-text-muted: #868e96; /* Muted text */
+    --sw-primary: #3d8bfd; /* Slightly brighter blue for primary actions */
+    --sw-primary-hover: #63a1ff;
+    --sw-input-bg: #2c3136;
+    --sw-input-border: #495057;
+    --sw-input-focus-border: #63a1ff;
+    --sw-input-placeholder: #6c757d;
+
+    /* Override Bootstrap defaults with our theme */
+    --bs-body-color: var(--sw-text);
+    --bs-body-bg: var(--sw-bg);
+    --bs-secondary-bg: var(--sw-bg-secondary);
+    --bs-tertiary-bg: #212529; /* Slightly different shade if needed */
+    --bs-border-color: var(--sw-border);
+    --bs-primary: var(--sw-primary);
+    --bs-emphasis-color: var(--bs-light);
+    --bs-body-secondary: var(--sw-text-muted);
+
+}
+
+body {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.container {
+    max-width: 800px; /* Limit width for better readability */
+    background-color: var(--sw-bg-secondary);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--sw-border);
+}
+
+h1, h2 {
+    color: var(--bs-light);
+    border-bottom: 1px solid var(--sw-border);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Form Styling */
+.form-label {
+    color: var(--sw-text);
+}
+
+.form-control,
+.form-select {
+    background-color: var(--sw-input-bg);
+    border: 1px solid var(--sw-input-border);
+    color: var(--sw-text);
+}
+
+.form-control::placeholder {
+    color: var(--sw-input-placeholder);
+    opacity: 1; /* Override bootstrap default */
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: var(--sw-input-bg);
+    border-color: var(--sw-input-focus-border);
+    color: var(--sw-text);
+    box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
+}
+
+.form-text {
+    color: var(--sw-text-muted);
+}
+
+/* Checkbox specific */
+.form-check-input {
+    background-color: var(--sw-input-bg);
+    border: 1px solid var(--sw-input-border);
+}
+.form-check-input:checked {
+    background-color: var(--sw-primary);
+    border-color: var(--sw-primary);
+}
+.form-check-label {
+    color: var(--sw-text);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--sw-primary);
+    border-color: var(--sw-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--sw-primary-hover);
+    border-color: var(--sw-primary-hover);
+}
+
+/* Spinner */
+#loading-spinner {
+    color: var(--sw-primary);
+}
+
+/* Error Messages */
+.alert-danger {
+    background-color: rgba(var(--bs-danger-rgb), 0.2);
+    color: var(--bs-danger);
+    border-color: rgba(var(--bs-danger-rgb), 0.4);
+}
+
+/* Link color */
+a {
+    color: var(--sw-primary);
+}
+a:hover {
+    color: var(--sw-primary-hover);
+} 
