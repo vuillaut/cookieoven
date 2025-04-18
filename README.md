@@ -10,10 +10,10 @@ A minimal Flask web application to generate projects from Cookiecutter templates
 
 ## Local Setup & Running
 
-1.  **Clone the Repository (if applicable)**
+1.  **Clone the Repository**
 
     ```bash
-    git clone <repository-url>
+    git clone [<repository-url>](https://github.com/vuillaut/cookieoven.git)
     cd cookiecutter-webapp
     ```
 
