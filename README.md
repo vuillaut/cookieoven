@@ -14,7 +14,7 @@ A minimal Flask web application to generate projects from Cookiecutter templates
 
     ```bash
     git clone https://github.com/vuillaut/cookieoven.git
-    cd cookiecutter-webapp
+    cd cookieoven 
     ```
 
 2.  **Create and Activate a Virtual Environment**
@@ -69,7 +69,7 @@ A minimal Flask web application to generate projects from Cookiecutter templates
 ## Directory Structure
 
 ```
-cookiecutter-webapp/
+cookieoven/
 ├── app.py                    # Flask application entrypoint
 ├── requirements.txt          # Dependencies
 ├── templates/                # Jinja2 HTML templates
